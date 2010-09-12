@@ -1,0 +1,3487 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={KumbiaPHP Team}, pdftex,
+  pdftitle={Manual de KumbiaPHP Framework},pdfsubject={Manual de KumbiaPHP Framework Versión 1.0 Spirit},
+  pdfkeywords={LyX, Documentación, KumbiaPHP, MVC, PHP, Framework}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\usepackage{listings}
+\lstset{ frame=shadowbox,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+\end_preamble
+\use_default_options false
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family sfdefault
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Manual de KumbiaPHP Framework Versión 1.0 Spirit
+\end_layout
+
+\begin_layout Author
+por Deivinson Tejeda Borrador
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introducción
+\end_layout
+
+\begin_layout Section
+Agradecimientos.
+\end_layout
+
+\begin_layout Standard
+Este manual es para agradecer a los que con su tiempo y apoyo en gran o
+ en poca medida han ayudado a que este framework sea cada día mejor.
+ A toda la comunidad que rodea a KumbiaPHP, con sus preguntas, notificaciones
+ de errores (Bug's), aportes, críticas, etc...
+ a todos ellos Gracias Totales.
+\end_layout
+
+\begin_layout Section
+Prefacio.
+\end_layout
+
+\begin_layout Subsection
+Sobre este libro.
+\end_layout
+
+\begin_layout Standard
+El libro de KumbiaPHP es un intento por comunicar todo lo que este framework
+ puede ayudar a hacer en su trabajo diario.
+ Le permite descubrir todos los aspectos de KumbiaPHP y aprender por qué
+ KumbiaPHP puede ser la herramienta que estaba esperando para empezar a
+ desarrollar su proyecto.
+ Este libro se encuentra en etapa de continuo desarrollo, diseño gráfico,
+ revisión ortográfica y gramática, contenidos, etc...
+ tal como sucede con el framework, por lo cual se aconseja siempre disponer
+ de la última versión.
+\end_layout
+
+\begin_layout Subsection
+Sobre KumbiaPHP.
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP es un producto latino para el mundo.
+ Programar debe ser tan bueno como bailar y KumbiaPHP es un baile, un baile
+ para programar.
+ KumbiaPHP es un framework de libre uso bajo 
+\emph on
+licencia new BSD
+\emph default
+.
+ Por lo tanto, puedes usar KumbiaPHP para tus proyectos siempre y cuando
+ tengas en cuenta la licencia.
+ Te aconsejamos que siempre uses versiones estables y lo más recientes posibles,
+ ya que se incluyen correcciones, nuevas funcionalidades y otras mejoras
+ interesantes.
+\end_layout
+
+\begin_layout Subsection
+Sobre la comunidad.
+\end_layout
+
+\begin_layout Standard
+La comunidad de KumbiaPHP esta formada sobre todo y en su gran mayoría por
+ gente 
+\emph on
+hispano-latina
+\emph default
+, de la cual nace un framework completamente en español y donde radica su
+ mayor diferencia respecto a otros frameworks que son de forma nativa anglosajon
+es.
+ Por otra parte se ha intentado, con el tiempo, aportar nuevos sistemas
+ de comunicación, así que se cuenta con una lista de correo, el foro, canal
+ de IRC y una Wi
+\emph on
+K
+\emph default
+i.
+ Esperamos que todo esto haga que la comunidad sea una parte importante
+ y vital para enriquecer y mejorar KumbiaPHP.
+\end_layout
+
+\begin_layout Standard
+Puedes encontrar más información en 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.kumbiaphp.com
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+¿Porque usar KumbiaPHP Framework?
+\end_layout
+
+\begin_layout Standard
+Mucha gente pregunta ¿como es este framework?, ¿otro mas?, ¿será facíl?
+ ¿que tan potente es? etc… pues aquí algunas razones del porque utilizar
+ KumbiaPHP.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Es-muy-Fácil"
+
+\end_inset
+
+Es muy 
+\emph on
+Fácil de Usar
+\emph default
+ (Zero-Config), Empezar con KumbiaPHP es demasiado fácil, es solo descomprimir
+ y empezar a trabajar, esta filosofía también es conocida como 
+\emph on
+Convención sobre Configuración
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Agiliza el Trabajo
+\emph default
+, crear una aplicación muy funcional con KumbiaPHP es cuestion de horas
+ o minutos, asi que podemos darle gusto a nuestros clientes sin que afecte
+ nuestro tiempo.
+ Gracias a las multiples herramientas que proporciona el framework para
+ agilizar el trabajo podemos hacer mas en menos tiempo.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Separar la Lógica de la Presentación
+\emph default
+, una de las mejores prácticas de desarrollo orientado a la Web es seperar
+ la lógica, de los datos y la presentación, con KumbiaPHP es sencillo aplicar
+ el patrón MVC (Modelo, Vista, Controlador) y hacer nuestras aplicaciones
+ mas faciles de mantener y de escalar.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Reducción del uso de otros Lenguajes
+\emph default
+, gracias a los 
+\emph on
+Helpers
+\emph default
+ y a otros patrones como 
+\emph on
+ActiveRecord
+\emph default
+ evitamos el uso de lenguajes HTML ó SQL (en menor porcentaje), ya que KumbiaPHP
+ hace esto por nosotros, con esto logramos código mas claro, natural y con
+ menos errores.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Habla Español!...
+
+\emph default
+ La documentación, mensajes de error, archivos de configuración, comunidad,
+ desarrolladores hablan español!!, con esto no tenemos que entender a medias,
+ con otros frameworks nos quedarnos cruzados de manos porque no podemos
+ pedir ayuda.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+La Curva de Aprendizaje
+\emph default
+ de KumbiaPHP es muy corta toda y si a esto le agregamos experiencia en
+ el manejo de Programación Orientada a Objetos sera mas rápida.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Parece un juego
+\emph default
+, sin darnos cuenta aplicamos los Patrones de diseño, los patrones de diseño
+ son herramientas que facilitan el trabajo realizando abstracción, reduciendo
+ código o haciendo mas fácil de entender la aplicación.
+ Cuando trabajas con KumbiaPHP aplicas muchos patrones y al final te das
+ cuenta que eran más faciles de usar de lo que se piensa.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Software Libre
+\emph default
+, No tienes que preocuparte por licenciar nada, KumbiaPHP promueve las comunidad
+es de aprendizaje, el conocimiento es de todos y cada uno sabe como aprovecharlo
+ mejor.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Aplicaciones Robustas
+\emph default
+, ¿no sabia que tenía una? las aplicaciones de hoy día requieren arquitecturas
+ robustas, KumbiaPHP proporciona una arquitectura fácil de aprender y de
+ implementar sin complicarnos con conceptos y sin sacrificar calidad.
+\end_layout
+
+\begin_layout Subsection
+¿Que aporta KumbiaPHP?
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP es un esfuerzo por producir un framework que ayude a reducir el
+ tiempo de desarrollo de una aplicación web sin producir efectos sobre los
+ programadores, basandonos en principios claves, que siempre recordamos.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+KISS
+\emph default
+ «Mantenlo simple, estúpido» (Keep It Simple, Stupid).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+DRY
+\emph default
+ No te repitas, en inglés Don't Repeat Yourself o DRY, también conocido
+ como Una vez y sólo una.
+\end_layout
+
+\begin_layout Itemize
+Convención sobre configuración.
+\end_layout
+
+\begin_layout Itemize
+Velocidad.
+\end_layout
+
+\begin_layout Standard
+Además KumbiaPHP esta fundamentado en las siguientes premisas.
+\end_layout
+
+\begin_layout Itemize
+Fácil de aprender.
+\end_layout
+
+\begin_layout Itemize
+Fácil de instalar y configurar.
+\end_layout
+
+\begin_layout Itemize
+Compatible con muchas plataformas.
+\end_layout
+
+\begin_layout Itemize
+Listo para aplicaciones comerciales.
+\end_layout
+
+\begin_layout Itemize
+Simple en la mayor parte de casos pero flexible para adaptarse a casos más
+ complejos.
+ 
+\end_layout
+
+\begin_layout Itemize
+Soportar muchas características de Aplicaciones Web actuales.
+\end_layout
+
+\begin_layout Itemize
+Soportar las practicas y patrones de programación mas productivos y eficientes.
+\end_layout
+
+\begin_layout Itemize
+Producir aplicaciones fáciles de mantener.
+\end_layout
+
+\begin_layout Itemize
+Basado en Software Libre.
+ 
+\end_layout
+
+\begin_layout Standard
+El principal principio es producir aplicaciones que sean prácticas para
+ el usuario final y no sólo para el programador.
+ La mayor parte de tareas que le quiten tiempo al desarrollador deberían
+ ser automatizadas por KumbiaPHP para que él pueda enfocarse en la lógica
+ de negocio de su aplicación.
+ No deberíamos reinventar la rueda cada vez que se afronte un nuevo proyecto
+ de software.
+\end_layout
+
+\begin_layout Standard
+Para satisfacer estos objetivos KumbiaPHP está escrito en PHP5.
+ Además ha sido probado en aplicaciones reales que trabajan en diversas
+ áreas con variedad de demanda y funcionalidad.
+ Es compatible con las bases de datos disponibles actuales mas usadas:
+\end_layout
+
+\begin_layout Itemize
+MySQL.
+\end_layout
+
+\begin_layout Itemize
+PostgreSQL.
+\end_layout
+
+\begin_layout Itemize
+Oracle.
+\end_layout
+
+\begin_layout Itemize
+SQLite.
+\end_layout
+
+\begin_layout Standard
+El modelo de objetos de KumbiaPHP es utilizado en las siguientes capas:
+\end_layout
+
+\begin_layout Itemize
+Abstracción de la base de datos.
+\end_layout
+
+\begin_layout Itemize
+Mapeo Objeto-Relacional.
+ 
+\end_layout
+
+\begin_layout Itemize
+Modelo MVC (Modelo, Vista, Controlador).
+\end_layout
+
+\begin_layout Standard
+Características comunes de Aplicaciones Web que son automatizadas por KumbiaPHP:
+\end_layout
+
+\begin_layout Itemize
+Plantillas (TemplateView).
+\end_layout
+
+\begin_layout Itemize
+Validación y Persistencia de Formularios.
+\end_layout
+
+\begin_layout Itemize
+Administración de Caché.
+\end_layout
+
+\begin_layout Itemize
+Scaffolding.
+\end_layout
+
+\begin_layout Itemize
+Interacción AJAX.
+\end_layout
+
+\begin_layout Itemize
+Generación de Formularios.
+\end_layout
+
+\begin_layout Itemize
+Seguridad.
+ 
+\end_layout
+
+\begin_layout Subsection
+Modelo, Vista, Controlador (MVC).
+\end_layout
+
+\begin_layout Subsubsection
+¿Que es MVC?
+\end_layout
+
+\begin_layout Standard
+En 1979, Trygve Reenskaug desarrolló una arquitectura para desarrollar aplicacio
+nes interactivas.
+ En este diseño existían tres partes: modelos, vistas y controladores.
+ El modelo MVC permite hacer la separación de las capas de interfaz, modelo
+ y lógica de control de ésta.
+ La programación por capas, es un estilo de programación en la que el objetivo
+ primordial es la separación de la lógica de negocios de la lógica de diseño,
+ un ejemplo básico de esto es separar la capa de datos de la capa de presentació
+n al usuario.
+ La ventaja principal de este estilo, es que el desarrollo se puede llevar
+ a cabo en varios niveles y en caso de algún cambio sólo se ataca al nivel
+ requerido sin tener que revisar entre código mezclado.
+ Además permite distribuir el trabajo de creación de una aplicación por
+ niveles, de este modo, cada grupo de trabajo está totalmente abstraído
+ del resto de niveles, simplemente es necesario conocer la API (Interfaz
+ de Aplicación) que existe entre niveles.
+ La división en capas reduce la complejidad, facilita la reutilización y
+ acelera el proceso de ensamblar o desensamblar alguna capa, o sustituirla
+ por otra distinta (pero con la misma responsabilidad).
+ En una aplicación Web una petición se realiza usando HTTP y es enviado
+ al controlador.
+ El controlador puede interactuar de muchas formas con el modelo, luego
+ él primero llama a la respectiva vista la cual obtiene el estado del modelo
+ que es enviado desde el controlador y lo muestra al usuario.
+\end_layout
+
+\begin_layout Subsubsection
+¿Como KumbiaPHP aplica el MVC?
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP Framework aprovecha los mejores patrones de programación orientada
+ a la web en especial el patrón MVC (Modelos, Vista, Controladores).
+ A continuación se describe el funcionamiento general de este paradigma
+ en KumbiaPHP.
+ 
+\end_layout
+
+\begin_layout Standard
+El objetivo de este patrón es el realizar y mantener la separación entre
+ la lógica de nuestra aplicación, los datos y la presentación.
+ Esta separación tiene algunas ventajas importantes, como Podemos identificar
+ más fácilmente en qué capa se está produciendo un problema con sólo saber
+ su naturaleza.
+ Podemos crear varias presentaciones sin necesidad de escribir varias veces
+ la misma lógica de aplicación.
+ Cada parte funciona independiente y cualquier cambio centraliza el efecto
+ sobre las demás, así que podemos estar seguros que una modificación en
+ un componente realizará bien las tareas en cualquier parte de la aplicación.
+\end_layout
+
+\begin_layout Subsubsection
+Más información.
+\end_layout
+
+\begin_layout Standard
+La base de KumbiaPHP es el MVC y POO, un tradicional patrón de diseño que
+ funciona en tres capas:
+\end_layout
+
+\begin_layout Itemize
+Modelos: Representan la información sobre la cual la aplicación opera, su
+ 
+\emph on
+lógica de negocios
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+Vistas: Visualizan el modelo usando páginas Web e enteractuando con los
+ usuarios (en principio) de éstas, una vista puede estar reprensentada por
+ cualquier formato salida, nos referimos a un xml, pdf, json, svg, png,
+ etc.
+ todo esto son vistas.
+\end_layout
+
+\begin_layout Itemize
+Controladores: Responden a acciones de usuario e invocan cambios en las
+ vistas o en los modelos según sea necesario.
+\end_layout
+
+\begin_layout Standard
+En KumbiaPHP los controladores están separados en partes, llamadas front
+ controller y un en un conjunto de acciones.
+ Cada acción sabe cómo reaccionar ante un determinado tipo de petición.
+ Las vistas están separadas en templates, views y partials.
+ El modelo ofrece una capa de abstracción de la base de datos, además dan
+ funcionalidad agregada a datos de sesión y validación de integridad relacional.
+ Este modelo ayuda a separar el trabajo en lógica de negocios (Modelos)
+ y la presentación (Vistas).
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, si usted tiene una aplicación que corra tanto en equipos de
+ escritorio y en dispositivos de moviles entonces podría crear dos vistas
+ diferentes compartiendo las mismas acciones en el controlador y la lógica
+ del modelo.
+ El controlador ayuda a ocultar los detalles de protocolo utilizados en
+ la petición (HTTP, modo consola, etc.) para el modelo y la vista.
+\end_layout
+
+\begin_layout Standard
+Finalmente, el modelo abstrae la lógica de datos, que hace a los modelos
+ independientes de las vistas.
+ La implementación de este modelo es muy liviana mediante pequeñas convenciones
+ se puede lograr mucho poder y funcionalidad.
+\end_layout
+
+\begin_layout Subsubsection
+Caso práctico.
+ (CAMBIAR EJEMPLO)
+\end_layout
+
+\begin_layout Standard
+Para entender mejor, veamos un ejemplo de cómo una arquitectura MVC trabaja
+ para un agregar al carrito.
+ Primero, el usuario interactúa con la interfaz seleccionando un producto
+ y presionando un botón, esto probablemente valida un formulario y envía
+ una petición al servidor.
+\end_layout
+
+\begin_layout Enumerate
+El Front Controller recibe la notificación de una acción de usuario, y luego
+ de ejecutar algunas tareas (enrutamiento, seguridad, etc.), entiende que
+ debe ejecutar la acción de agregar en el controlador.
+ 
+\end_layout
+
+\begin_layout Enumerate
+La acción de agregar accede al modelo y actualiza el objeto del carrito
+ en la sesión de usuario.
+\end_layout
+
+\begin_layout Enumerate
+Si la modificación es almacenada correctamente, la acción prepara el contenido
+ que será devuelto en la respuesta – confirmación de la adición y una lista
+ completa de los productos que están actualmente en el carrito.
+ La vista ensambla la respuesta de la acción en el cuerpo de la aplicación
+ para producir la página del carrito de compras.
+\end_layout
+
+\begin_layout Enumerate
+Finalmente es transferida al servidor Web que la envía al usuario, quien
+ puede leerla e interactuará con ella de nuevo.
+\end_layout
+
+\begin_layout Chapter
+Empezando con KumbiaPHP
+\end_layout
+
+\begin_layout Section
+Instalar KumbiaPHP.
+\end_layout
+
+\begin_layout Standard
+En esta sección se explican los pasos a seguir para poner a funcionar el
+ framework en nuestro ambiente de desarrollo.
+\end_layout
+
+\begin_layout Subsection
+Requisitos.
+\end_layout
+
+\begin_layout Standard
+Como se mencionó arriba KumbiaPHP es 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "enu:Es-muy-Fácil"
+
+\end_inset
+
+ y en este sentido los requerimiento para hacer funcionar el framework son
+ mínimos, a continuación se listan:
+\end_layout
+
+\begin_layout Itemize
+Interprete PHP (versión recomendada 5.2.x).
+\end_layout
+
+\begin_layout Itemize
+Servidor Web con soporte a reescritura de URL
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Apache, Cherokee, Lighttpd, Internet Information Server (IIS)
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Manejador de Base de Datos soportado por KumbiaPHP.
+\end_layout
+
+\begin_layout Standard
+\align block
+Para instalar KumbiaPHP Framework, se debe descargar su archivo comprimido
+ desde sección de desacarga 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.kumbiaphp.com/blog/manuales-y-descargas/
+\end_layout
+
+\end_inset
+
+ para obtener la versión más reciente del framework.
+ Una vez descargado el archivo, es esencial asegurarse que tiene la extensión
+ .tgz para usuarios Linux ó .zip para usuarios Windows, ya que de otro modo
+ no se descomprimirá correctamente.
+\end_layout
+
+\begin_layout Standard
+A continuación se descomprime su contenido en el directorio raíz del servidor
+ web (
+\emph on
+DocumentRoot
+\emph default
+).
+ Para asegurar cierta uniformidad en el documento, en este capítulo se supone
+ que se ha descomprimido el paquete del framework en el directorio 
+\emph on
+kumbiaphp/
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Teniendo una estructura como la siguiente:
+\begin_inset CommandInset label
+LatexCommand label
+name "estructura-beta1-basica"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+`-- 1.0
+\end_layout
+
+\begin_layout Plain Layout
+
+    |-- core     
+\end_layout
+
+\begin_layout Plain Layout
+
+    |-- default
+\end_layout
+
+\begin_layout Plain Layout
+
+        |-- app
+\end_layout
+
+\begin_layout Plain Layout
+
+        |-- index.php
+\end_layout
+
+\begin_layout Plain Layout
+
+        |-- .htaccess
+\end_layout
+
+\begin_layout Plain Layout
+
+        `-- public
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Configurar Servidor Web.
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP Framework utiliza un módulo para la reescritura de URLs haciendolas
+ más comprensibles y faciles de recordar en nuestras aplicaciones.
+ Por esto, el módulo debe ser configurado e instalado, en este sentido debe
+ chequear que el módulo esté habilitado, en las siguientes secciones se
+ explica como hacer.
+\end_layout
+
+\begin_layout Subsubsection
+Habitando mod_rewrite de Apache en GNU/Linux (Debian, Ubuntu y Derivados).
+\end_layout
+
+\begin_layout Standard
+Nos aseguramos de activar el 
+\emph on
+mod_rewrite
+\emph default
+ de esta manera y como usuario administrador desde la consola.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#a2enmod rewrite
+\end_layout
+
+\begin_layout Plain Layout
+
+Enabling module rewrite.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Run '/etc/init.d/apache2 restart' to activate new configuration!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo anterior indica que se ha habilitado el mod_rewrite de Apache, pero aun
+ falta indicarle a Apache que interprete los archivos 
+\emph on
+.htaccess
+\emph default
+ que son los encargados de hacer uso del rewrite y a su vez tienen las reglas
+ de reescritura de las URLs.
+\end_layout
+
+\begin_layout Standard
+Como usuario administrador editamos el siguiente archivo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Clean,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#vi /etc/apache2/sites-enabled/000-default
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<Directory "/to/document/root">     
+\end_layout
+
+\begin_layout Plain Layout
+
+    Options Indexes FollowSymLinks
+\end_layout
+
+\begin_layout Plain Layout
+
+    AllowOverride None
+\end_layout
+
+\begin_layout Plain Layout
+
+    Order allow,deny
+\end_layout
+
+\begin_layout Plain Layout
+
+    Allow from all
+\end_layout
+
+\begin_layout Plain Layout
+
+</Directory> 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para que los 
+\emph on
+.htaccess
+\emph default
+ tengan efectos, se ha de sustituir 
+\emph on
+AllowOverride None
+\emph default
+ por 
+\emph on
+AllowOverride All
+\emph default
+, de esta manera Apache podrá interpretar estos archivos.
+\end_layout
+
+\begin_layout Standard
+Hecho esto, queda reiniciar el servicio de apache.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#/etc/init.d/apache2 restart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A continuación, se prueba todas las configuraciones realizadas mediante
+ la siguiente URL.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si todo ha ido bien, deberías ver una página de bienvenida como la que se
+ muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:instalación-exitosa-kumbiaphp"
+
+\end_inset
+
+, con lo que la instalación rápida se puede dar por concluida.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:instalación-exitosa-kumbiaphp"
+
+\end_inset
+
+Instalación Exitosa de KumbiaPHP
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/bienvenida.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto es un entorno de pruebas el cual está pensado para que practiques con
+ KumbiaPHP en un servidor local, no para desarrollar aplicaciones complejas
+ que terminan siendo publicadas en la web.
+\end_layout
+
+\begin_layout Subsubsection
+¿Por qué es importante el Mod-Rewrite?.
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:importancia-mod-rewrite"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ReWrite es un módulo de apache que permite reescribir las urls que han utilizado
+ nuestros usuarios.
+ KumbiaPHP Framework encapsula esta complejidad permitiéndonos usar URLs
+ bonitas ó limpias como las que vemos en blogs o en muchos sitios donde
+ no aparecen los 
+\emph on
+?
+\emph default
+, los 
+\emph on
+&
+\emph default
+ ó las extensiones del servidor (.php, .asp, .aspx, etc).
+\end_layout
+
+\begin_layout Standard
+Además de esto, con mod-rewrite KumbiaPHP puede proteger nuestras aplicaciones
+ ante la posibilidad de que los usuarios puedan ver los directorios del
+ proyecto y puedan acceder a archivos de clases, modelos, lógica, etc., sin
+ que sean autorizados.
+\end_layout
+
+\begin_layout Standard
+Con mod-rewrite el único directorio que pueden ver los usuarios es el contenido
+ del directorio público (public) del servidor web, el resto permanece oculto
+ y sólo puede ser visualizado cuando ha realizado una petición en forma
+ correcta y también es correcto según nuestra lógica de aplicación.
+ Cuando escribes direcciones utilizando este tipo de URLs, estás ayudando
+ también a los motores de búsqueda a indexar mejor tu información.
+ 
+\end_layout
+
+\begin_layout Subsection
+Mi Primera Aplicación con KumbiaPHP
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Mi-Primera-Aplicación"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego que explicamos los pasos para configurar KumbiaPHP y ver su pantalla
+ de bienvenida, se viene hacer el primer ejemplo el cual tiene como objetivo
+ entender elementos básicos al momento de utilizar el framework que servirá
+ para entender la arquitectura MVC (Modelo-Vista-Controlador).
+\end_layout
+
+\begin_layout Subsubsection
+Hola, KumbiaPHP!
+\end_layout
+
+\begin_layout Standard
+Ahora escribiremos el famoso "Hola, Mundo!" pero con un pequeño cambio:
+ Diremos "Hola, KumbiaPHP!".
+ Pensando en esto, recordemos el modelo MVC, Según esto, KumbiaPHP debería
+ aceptar una petición, que buscaría en controlador y, en éste, una acción
+ que atendería la petición.
+ Luego, KumbiaPHP utilizará esta información de controlador y acción para
+ buscar la vista asociada a la petición.
+\end_layout
+
+\begin_layout Standard
+Para escribir el código de nuestro "Hola, KumbiaPHP!" no necesitamos sino
+ un controlador y una vista.
+ No necesitamos modelos, ya que no estamos trabajando con información de
+ una base de datos.
+\end_layout
+
+\begin_layout Standard
+Nos ubicamos en el directorio 
+\emph on
+/path/to/kumbiaphp/app/controllers/
+\emph default
+.
+ Aquí estarán nuestros controladores (Para más detalles, lee la documentación
+ sobre el directorio app).
+ Para crear un controlador, es importante tener en cuenta las convenciones
+ de nombre que utiliza el Framework.
+ llamaremos a nuestro controlador 
+\emph on
+saludo_controller.php
+\emph default
+.
+ Nótese el sufijo 
+\emph on
+_controller.php
+\emph default
+ ésto forma parte de la convención de nombres, y hace que KumbiaPHP identifique
+ ese archivo como un controlador.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+El Controlador.
+\end_layout
+
+\begin_layout Standard
+Ahora agregamos contenido al controlador 
+\emph on
+app/controllers/saludo_controller.php
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * Controller Saludo
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    public function hola() 
+\end_layout
+
+\begin_layout Plain Layout
+
+    {}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el código tenemos la definición de la class 
+\emph on
+SaludoController
+\emph default
+, Nótese que también esta el sufijo 
+\emph on
+Controller
+\emph default
+ al final de la declaración de la clase, ésto la identifica como una clase
+ controladora, y ésta hereda (extends) de la superclase 
+\emph on
+ApplicationController
+\emph default
+, con lo que adquiere las propiedades de una clase controladora, ademas
+ existe el método 
+\emph on
+hola().
+\end_layout
+
+\begin_layout Subsubsection
+La Vista.
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:La-Vista."
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para poder ver la salida que envía el controlador, es necesario crear la
+ vista asociada a la acción.
+ Primero, creamos un directorio con el mismo nombre de nuestro controlador
+ (en este caso debería llamarse 
+\emph on
+saludo
+\emph default
+), y dentro de este estarán todas las vistas asociadas a las acciones que
+ necesiten mostrar alguna información.
+ En nuestro ejemplo llamamos a una acción llamada hola; por lo tanto, creamos
+ un archivo llamado 
+\emph on
+app/views/saludo/hola.phtml.
+ 
+\emph default
+Una vez creado este archivo, le agregamos un poco de contenido:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<h1>Hola, KumbiaPHP!</h1>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A continuación se prueba al acceder a la siguiente URL: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/saludo/hola/
+\end_layout
+
+\end_inset
+
+y el resultado debe ser como muestra la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:contenido-hola.phtml"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:contenido-hola.phtml"
+
+\end_inset
+
+Contenido de la vista 
+\emph on
+hola.phtml
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/hola-mundo.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+KumbiaPHP y sus URLs
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:kumbiaphp-url"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para entender el funcionamiento del framework es importante entender sus
+ URLs, la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:url-kumbiaphp-1"
+
+\end_inset
+
+muestra una URL típica en KumbiaPHP.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:url-kumbiaphp-1"
+
+\end_inset
+
+URL en KumbiaPHP
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename img/url-instalacion-local.png
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En KumbiaPHP no existen las extensiones 
+\emph on
+.php
+\emph default
+ esto porque en primera instancia hay reescritura de URLs y además cuenta
+ con un front-controller encargado de recibir todas las peticiones (más
+ adelante se explicará en detalle).
+\end_layout
+
+\begin_layout Standard
+Cualquier otra información pasada por URL es tomada como parámetro de la
+ acción, a propósito de nuestra aplicación como muestra la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:URL-con-parámetros"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:URL-con-parámetros"
+
+\end_inset
+
+URL con parámetros
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/url-parametros2.png
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto es útil para evitar que tener estar enviando parámetros GET de la forma
+ 
+\emph on
+?var=valor&var2=valor2
+\emph default
+ (esto es, de la forma tradicional como se viene utilizando PHP), la cual
+ revela información sobre la arquitectura de software que se dispone en
+ el servidor.
+ Además, hacen que nuestra URL se vea mal.
+\end_layout
+
+\begin_layout Subsubsection
+Agregando más contenido.
+\end_layout
+
+\begin_layout Standard
+Agregaremos algo de contenido dinámico a nuestro proyecto, para que no sea
+ tan aburrido.
+ Mostraremos la hora y la fecha, usando la función date().
+\end_layout
+
+\begin_layout Standard
+Cambiamos un poco el controlador 
+\emph on
+app/controllers/saludo_controller.php
+\emph default
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * Controller Saludo
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * método para saludar
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    public function hola() 
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        $this->fecha = date("Y-m-d H:i"); 
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP implementa las variables de instancia lo que significa que todos
+ atributos definidos en el controller, pasará automaticamente a la vista,
+ en el código anterior tenemos el atributo 
+\emph on
+$this->fecha
+\emph default
+ este pasará a la vista como una variable llamada 
+\emph on
+$fecha.
+\end_layout
+
+\begin_layout Standard
+En la vista que se creo en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:La-Vista."
+
+\end_inset
+
+ y agregamos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<h1>Hola, KumbiaPHP!</h1>
+\end_layout
+
+\begin_layout Plain Layout
+
+<?php echo $fecha ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ahora, si volvemos a 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/saludo/hola/
+\end_layout
+
+\end_inset
+
+, obtendremos la hora y fecha del momento en que se haga la petición, como
+ se muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Hora-y-fecha-peticion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Hora-y-fecha-peticion"
+
+\end_inset
+
+Hora y fecha de petición
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/mas-contenido.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para agregarle calidez al asunto, le preguntaremos al usuario su nombre
+ vía parámetro 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:kumbiaphp-url"
+
+\end_inset
+
+, volvemos a editar el controlador 
+\emph on
+saludo_controller.php
+\emph default
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * Controller Saludo
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * método para saludar
+\end_layout
+
+\begin_layout Plain Layout
+
+     * @param string $nombre
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    public function hola($nombre) 
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        $this->fecha = date("Y-m-d H:i");
+\end_layout
+
+\begin_layout Plain Layout
+
+        $this->nombre = $nombre;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Editamos la vista 
+\emph on
+app/views/saludo/hola.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<h1>Hola <?php echo $nombre; ?>, ¡Qué lindo es utilizar KumbiaPHP! ¿cierto?</h1>
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+<?php echo $fecha ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si ahora entramos a 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/saludo/CaChi/
+\end_layout
+
+\end_inset
+
+, nos mostrará en el navegador web el saludo junto con el nombre colocado
+ y la fecha actual, como se muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Saludando-al-Usuario"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Saludando-al-Usuario"
+
+\end_inset
+
+Saludando al Usuario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/saludando-nombre.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Repitiendo la Historia.
+\end_layout
+
+\begin_layout Standard
+Ahora vamos otra acción llamada 
+\emph on
+adios() 
+\emph default
+y como su nombre indica haremos el proceso inverso a saludar, es decir despedir
+ a los usuarios.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * Controller Saludo
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * método para saludar
+\end_layout
+
+\begin_layout Plain Layout
+
+     * @param string $nombre
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    public function hola($nombre) 
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        $this->fecha = date("Y-m-d H:i");
+\end_layout
+
+\begin_layout Plain Layout
+
+        $this->nombre = $nombre;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * método para despedir
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    public function adios() 
+\end_layout
+
+\begin_layout Plain Layout
+
+    {}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Agregamos una nueva vista para presentar el contenido de la acción 
+\emph on
+adios() 
+\emph default
+y si recordamos lo que se explicó en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:La-Vista."
+
+\end_inset
+
+ deberíamos crear una vista 
+\emph on
+app/views/saludo/adios.phtml 
+\emph default
+con el siguiente contenido.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML"
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+<h1>Ops! se ha ido :( </h1>
+\end_layout
+
+\begin_layout Plain Layout
+
+<?php echo Html::link('saludo/hola/CaChi/', 
+\end_layout
+
+\begin_layout Plain Layout
+
+                   'Volver a Saludar'); ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si ingresa al siguiente enlace 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/saludo/adios/
+\end_layout
+
+\end_inset
+
+ se verá un nuevo texto, y un vínculo a la acción 
+\emph on
+hola(), 
+\emph default
+como se muestra en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Vista-de-adios"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Vista-de-adios"
+
+\end_inset
+
+Vista de 
+\emph on
+adios 
+\emph default
+al usuario.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/pantalla-adios.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Html::link()
+\emph default
+, es uno de los tantos helper que ofrece KumbiaPHP para facilitar al momento
+ de programar en las vistas.
+ Podríamos escribir el código HTML directamente, colocando <a href="kumbiaphp/sa
+ludo/hola/CaChi/">Volver a Saludar</a>, pero esto puede conllevar a un problema,
+ imagine que quisiera cambiar de nombre a su proyecto de 
+\emph on
+kumbiaphp
+\emph default
+ a 
+\emph on
+demo
+\emph default
+, tendríamos que modificar todos los vínculos, los helpers de KumbiaPHP
+ resuelven estos problemas.
+\end_layout
+
+\begin_layout Chapter
+El Controlador
+\end_layout
+
+\begin_layout Standard
+En KumbiaPHP Framework, la capa del controlador, contiene el código que
+ liga la lógica de negocio con la presentación, está dividida en varios
+ componentes que se utilizan para diversos propósitos:
+\end_layout
+
+\begin_layout Itemize
+El controlador frontal (
+\emph on
+front controller
+\emph default
+) es el único punto de entrada a la aplicación.
+ Carga la configuración y determina la acción a ejecutarse.
+ 
+\end_layout
+
+\begin_layout Itemize
+Las acciones verifican la integridad de las peticiones y preparan los datos
+ requeridos por la capa de presentación.
+ 
+\end_layout
+
+\begin_layout Itemize
+Los objetos 
+\emph on
+input
+\emph default
+ y 
+\emph on
+session
+\emph default
+ dan acceso a los parámetros de la petición y a los datos persistentes del
+ usuario.
+ Se utilizan muy a menudo en la capa del controlador.
+\end_layout
+
+\begin_layout Itemize
+Los filtros son trozos de código ejecutados para cada petición, antes ó
+ después de un controlador incluso antes ó después de una acción.
+ Por ejemplo, los filtros de seguridad y validación son comúnmente utilizados
+ en aplicaciones web.
+\end_layout
+
+\begin_layout Standard
+Este capítulo describe todos estos componentes.
+ Para una página básica, es probable que solo necesites escribir algunas
+ líneas de código en la clase de la acción, y eso es todo.
+ Los otros componentes del controlador solamente se utilizan en situaciones
+ específicas.
+\end_layout
+
+\begin_layout Section
+Controlador Frontal.
+\end_layout
+
+\begin_layout Standard
+Todas las peticiones web son manejadas por un solo Controlador Frontal (
+\emph on
+front controller
+\emph default
+), que es el punto de entrada único de toda la aplicación.
+\end_layout
+
+\begin_layout Standard
+Cuando el 
+\emph on
+front controller
+\emph default
+ recibe la petición, utiliza el sistema de enrutamiento de KumbiaPHP para
+ asociar el nombre de un controlador y el de la acción mediante la URL escrita
+ por el cliente (usuario u otra aplicación).
+ 
+\end_layout
+
+\begin_layout Standard
+Veamos la siguiente URL, ésta llama al script 
+\emph on
+index.php
+\emph default
+ (que es el front controller) y será entendido como llamada a una acción.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/micontroller/miaccion/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Framed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+Debído a la reescritura de URL nunca se hace un llamado de forma explícita
+ al 
+\emph on
+index.php, 
+\emph default
+sólo se coloca el controlador, acción y parámetros.
+ Internamente por las reglas reescritura de URL es llamado el 
+\emph on
+front controller.
+ 
+\emph default
+Ver sección ¿por qué es importante el Mod-Rewrite? 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:importancia-mod-rewrite"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Destripando el Front Controller.
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+front controller
+\emph default
+ de KumbiaPHP se encarga de despachar las peticiones, lo que implica algo
+ más que detectar la acción que se ejecuta.
+ De hecho, ejecuta el código común a todas las acciones, incluyendo:
+\end_layout
+
+\begin_layout Enumerate
+Define las constantes del núcleo de la aplicación (APP_PATH, CORE_PATH y
+ PUBLIC_PATH).
+\end_layout
+
+\begin_layout Enumerate
+Carga e inicializa las clases del núcleo del framework (bootstrap).
+\end_layout
+
+\begin_layout Enumerate
+Carga la configuración (Config).
+\end_layout
+
+\begin_layout Enumerate
+Decodifica la URL de la petición para determinar la acción a ejecutar y
+ los parámetros de la petición (Router).
+\end_layout
+
+\begin_layout Enumerate
+Si la acción no existe, redireccionará a la acción del error 404 (Dispatcher).
+\end_layout
+
+\begin_layout Enumerate
+Activa los filtros (por ejemplo, si la petición necesita autenticación)
+ (Dispatcher).
+\end_layout
+
+\begin_layout Enumerate
+Ejecuta los filtros, primera pasada (
+\emph on
+before
+\emph default
+).
+ (Dispatcher) 
+\end_layout
+
+\begin_layout Enumerate
+Ejecuta la acción (Dispatcher).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Ejecuta los filtros, segunda pasada (
+\emph on
+after
+\emph default
+) (Dispatcher).
+\end_layout
+
+\begin_layout Enumerate
+Ejecuta la vista y muestra la respuesta (View).
+\end_layout
+
+\begin_layout Standard
+En grande rasgos éste es el proceso del front controller, esto es todo que
+ necesitas saber sobre este componente el cual es imprescindible de la arquitect
+ura MVC dentro de KumbiaPHP
+\end_layout
+
+\begin_layout Subsection
+Front Controller por defecto.
+\end_layout
+
+\begin_layout Standard
+El 
+\emph on
+front controller
+\emph default
+ por defecto, llamado index.php y ubicado en el directorio 
+\emph on
+public/
+\emph default
+ del proyecto, es un simple script, como el siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\footnotesize},language=PHP,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+error_reporting(E_ALL ^ E_STRICT);
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+//define('PRODUCTION', TRUE);
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+define('START_TIME', microtime(1));
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+define('APP_PATH', dirname(dirname(__FILE__)) .
+ '/app/');
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+define('CORE_PATH', dirname(dirname(APP_PATH)) .
+ '/core/');
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+if ($_SERVER['QUERY_STRING']) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    define('PUBLIC_PATH', substr(urldecode($_SERVER['REQUEST_URI']), 0,
+ - strlen($_SERVER['QUERY_STRING']) + 6)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+} else {     
+\end_layout
+
+\begin_layout Plain Layout
+
+   define('PUBLIC_PATH', $_SERVER['REQUEST_URI']); 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+ $url = isset($_GET['_url']) ? $_GET['_url'] : '/';
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+require CORE_PATH .
+ 'kumbia/bootstrap.php';
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La definición de las constantes corresponde al primer paso descrito en la
+ sección anterior.
+ Después el controlador frontal incluye el 
+\emph on
+bootstrap.php
+\emph default
+ de la aplicación, que se ocupa de los pasos 2 a 5.
+ Internamente el core de KumbiaPHP con sus componente Router, Dispatcher
+ y View ejecutan todos los pasos subsiguientes.
+\end_layout
+
+\begin_layout Standard
+Todas las constantes son valores por defecto de la instalación de KumbiaPHP
+ en un ambiente local.
+\end_layout
+
+\begin_layout Subsection
+Constantes de KumbiaPHP.
+\end_layout
+
+\begin_layout Standard
+La deficinión constantes cada cual cumple un objetivo especifico con el
+ fin de brindar mayor flexibilidad al momento de maneras rutas (paths) en
+ el framework.
+\end_layout
+
+\begin_layout Subsubsection
+APP_PATH.
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:APP_PATH"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Constante que contiene la ruta absoluta al directorio donde se encuentra
+ la aplicación (app), por ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+echo APP_PATH;
+\end_layout
+
+\begin_layout Plain Layout
+
+//la salida es: 
+\end_layout
+
+\begin_layout Plain Layout
+
+/var/www/kumbiaphp/default/app/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con esta constante es posible utilizarla para incluir archivos que se encuentre
+ bajo el arbol de directorio de la aplicación, por ejemplo quiere incluir
+ un archivo que esta en el directio 
+\emph on
+app/libs/test.php
+\emph default
+ la forma de hacerlo sería.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+include_once APP_PATH.'libs/test.php';
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+CORE_PATH.
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:CORE_PATH"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Constante que contiene la ruta absoluta al directorio donde se encuentra
+ el core de KumbiaPHP.
+ por ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+echo CORE_PATH;
+\end_layout
+
+\begin_layout Plain Layout
+
+//la salida es: 
+\end_layout
+
+\begin_layout Plain Layout
+
+/var/www/kumbiaphp/core/   
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para incluir archivos que se encuentre bajo este arbol de directorio es
+ el mismo precidimiento que se explico para la constante 
+\emph on
+APP_PATH.
+\end_layout
+
+\begin_layout Subsubsection
+PUBLIC_PATH.
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:PUBLIC_PATH"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Constante que contiene la URL para el navegador (browser) y apunta al directorio
+ 
+\emph on
+public/
+\emph default
+ para enlazar imágenes, CSS, JavaScript y todo lo que sea ruta para browser.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+//Genera un link que ira al
+\end_layout
+
+\begin_layout Plain Layout
+
+//controller: controller y action: action
+\end_layout
+
+\begin_layout Plain Layout
+
+<a href="<?php echo PUBLIC_PATH ?>controller/action/" title="Mi Link">Mi
+ Link</a>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//Enlaza una imagen que esta en public/img/imagen.jpg
+\end_layout
+
+\begin_layout Plain Layout
+
+<img src="<?php echo PUBLIC_PATH ?>img/imagen.jpg" alt="Una Imagen" />
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+//Enlaza el archivo CSS en public/css/style.css
+\end_layout
+
+\begin_layout Plain Layout
+
+<link rel="stylesheet" type="text/css" href="<?php echo PUBLIC_PATH ?>css/style.c
+ss"/>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Las Acciones.
+\end_layout
+
+\begin_layout Standard
+Las acciones son el parte fundamental en la aplicación, puesto que contienen
+ toda la forma en que la aplicación actuará antes ciertas peticiones.
+ Las acciones utilizan el modelo y definen variables para la vista.
+ Cuando se realiza una petición web en una aplicación KumbiaPHP, la URL
+ define una acción y los parámetros de la petición.
+ ver sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:kumbiaphp-url"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las acciones son métodos de una clase controladora llamada 
+\emph on
+ClassController
+\emph default
+ que hereda de la clase 
+\emph on
+ApplicationController
+\emph default
+ y éstas pueden o no ser agrepudas por módulos.
+\end_layout
+
+\begin_layout Subsection
+Las acciones y las vistas.
+\end_layout
+
+\begin_layout Standard
+Cada vez que se ejecuta una acción KumbiaPHP buscará entonces una vista
+ (view) con el mismo nombre de la acción.
+ Este comportamiento se ha definido por defecto.
+ Esto poque normalmente las peticiones deben dar una respuesta al cliente
+ que la ha solicitado, entonces si tenemos una acción llamada 
+\emph on
+saludo() 
+\emph default
+debería existir una vista asociada a esta acción llamada 
+\emph on
+saludo.phtml.
+ 
+\emph default
+Habrá un capitulo mas extenso dedicado a la explicación de las vistas en
+ KumbiaPHP.
+\end_layout
+
+\begin_layout Subsection
+Obtener valores desde una acción.
+\end_layout
+
+\begin_layout Standard
+Las URLs de KumbiaPHP están caracterizadas por tener varias partes, cada
+ una de ellas con una función conocida.
+ Para obtener desde un controlador los valores que vienen en la URL podemos
+ usar algunas propiedades definidas en el controlador.
+\end_layout
+
+\begin_layout Standard
+Tomemos la URL.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+http://www.dominio.com/noticias/ver/12/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+El Controlador: 
+\emph on
+noticias
+\end_layout
+
+\begin_layout Itemize
+La acción: 
+\emph on
+ver
+\end_layout
+
+\begin_layout Itemize
+Parámetros: 
+\emph on
+12
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * Controller Noticia
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+class NoticiasController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * método para ver la noticia
+\end_layout
+
+\begin_layout Plain Layout
+
+     * @param int $id
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    public function ver($id)
+\end_layout
+
+\begin_layout Plain Layout
+
+    {
+\end_layout
+
+\begin_layout Plain Layout
+
+        echo $this->controller_name; //noticias
+\end_layout
+
+\begin_layout Plain Layout
+
+        echo $this->action_name; //ver
+\end_layout
+
+\begin_layout Plain Layout
+
+        //Un array con todos los parámetros enviados a la acción
+\end_layout
+
+\begin_layout Plain Layout
+
+        var_dump($this->parameters);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es importante notar la relación que guardan los parámetros enviados por
+ URL con la acción.
+ En este sentido KumbiaPHP tiene una característica que hace 
+\emph on
+seguro
+\emph default
+ el proceso de ejecutar las acciones y es que se limita el envío de parámetros
+ tal como se define en la método (acción).
+ Lo que indica que todos los parámetros enviados por URL son argumentos
+ que recibe la acción.
+ ver sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:kumbiaphp-url"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el ejemplo anterior se definió en la acción 
+\emph on
+ver($id) 
+\emph default
+un solo parámetro, esto quiere decir que si se intentan enviar parámetros
+ adicionales KumbiaPHP lanzará una exception, esté comportamiento es por
+ defecto en el framework y se puede cambiar para determinados escenarios
+ según el proposito de nuestra aplicación para la ejecución de una acción.
+\end_layout
+
+\begin_layout Standard
+Tomando el ejemplo 
+\begin_inset Quotes fld
+\end_inset
+
+Hola Mundo
+\begin_inset Quotes frd
+\end_inset
+
+ ponga en práctica lo antes explicado y lo hará enviando parámetros adicionales
+ al método 
+\emph on
+hola($nombre) 
+\emph default
+el cual sólo recibe un sólo parámetro (el nombre)
+\emph on
+ 
+\emph default
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/saludo/hola/CaChi/adicional
+\end_layout
+
+\end_inset
+
+, en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Excepción-de-Parámetros-erroneos"
+
+\end_inset
+
+ verá la excepción generada por KumbiaPHP.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Excepción-de-Parámetros-erroneos"
+
+\end_inset
+
+Excepción de Parámetros erroneos.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/parametros-erroneos.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Siguiendo en el mismo ejemplo imaginemos que requerimos que la ejecución
+ de la acción 
+\emph on
+hola()
+\emph default
+ obvie la cantidad de parámetros enviados por URL, para esto solo tenemos
+ que indicarle a KumbiaPHP mediante el atributo 
+\emph on
+$limit_params
+\emph default
+ que descarte el número de parámetros que se pasan por URL.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,showstringspaces=false"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * Controller Saludo
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    /**
+\end_layout
+
+\begin_layout Plain Layout
+
+     * Limita la cantidad correcta de
+\end_layout
+
+\begin_layout Plain Layout
+
+     * parámetros de una action
+\end_layout
+
+\begin_layout Plain Layout
+
+     */
+\end_layout
+
+\begin_layout Plain Layout
+
+    public $limit_params = FALSE;
+\end_layout
+
+\begin_layout Plain Layout
+
+    ...
+ métodos ...
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cuando tiene el valor 
+\emph on
+FALSE
+\emph default
+ como se explicó antes, descarta la cantidad de parámetros de la acción.
+ Ingresa a la siguiente URL 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://localhost/kumbiaphp/saludo/hola/CaChi/param2/param3/
+\end_layout
+
+\end_inset
+
+ y verá como ya no esta la excepción de la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Excepción-de-Parámetros-erroneos"
+
+\end_inset
+
+ y podrá ver la vista de la acción como muestra la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Descartando-la-cantidad-parametros"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Descartando-la-cantidad-parametros"
+
+\end_inset
+
+Descartando la cantidad de parámetros de la acción.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/parametros-extras.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Convenciones y Creación de un Controlador
+\end_layout
+
+\begin_layout Subsection
+Convenciones.
+\end_layout
+
+\begin_layout Standard
+Los controladores en KumbiaPHP deben llevar las siguientes convenciones
+ y características:
+\end_layout
+
+\begin_layout Itemize
+El archivo debe creado sólo en el directorio
+\emph on
+ app/controllers/.
+\end_layout
+
+\begin_layout Itemize
+El archivo debe tener el nombre del controlador y la terminación 
+\emph on
+_controller.php, 
+\emph default
+por ejemplo 
+\emph on
+saludo_controller.php.
+\end_layout
+
+\begin_layout Itemize
+El archivo debe contener la clase controladora con el mismo nombre del archivo
+ en notación CamelCase
+\emph on
+.
+ 
+\emph default
+Retomando el ejemplo anterior el nombre de la clase controladora sería 
+\emph on
+SaludoController.
+\end_layout
+
+\begin_layout Subsection
+Creación de un Controlador.
+\end_layout
+
+\begin_layout Standard
+Ahora se pondrá en práctica lo visto anteriormente y crearemos un controlador
+ (
+\emph on
+controller
+\emph default
+) llamado 
+\emph on
+saludo
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+/**
+\end_layout
+
+\begin_layout Plain Layout
+
+ * Controller Saludo
+\end_layout
+
+\begin_layout Plain Layout
+
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Clase ApplicationController.
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Clase-ApplicationController"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es importante recordar que KumbiaPHP es un framework MVC y POO en este sentido
+ existe 
+\emph on
+ApplicationController
+\emph default
+ y es la super clase de los controladores, todos deben heredar (
+\emph on
+extends
+\emph default
+) de esta clase para tener las propiedades (atributos) y métodos que facilitan
+ la interacción entre la capa del modelo y presentación.
+\end_layout
+
+\begin_layout Standard
+La clase 
+\emph on
+ApplicationController
+\emph default
+ esta definida en 
+\emph on
+app/libs/application_controller.php
+\emph default
+ es una clase muy sencilla de usar y es clave dentro del MVC.
+\end_layout
+
+\begin_layout Subsection
+Acciones y Controladores por defecto.
+\end_layout
+
+\begin_layout Section
+Filtros.
+\end_layout
+
+\begin_layout Standard
+Los controladores en KumbiaPHP poseen unos métodos útiles que permiten realizar
+ comprobaciones antes y después de ejecutar un controlador y una acción,
+ los filtros pueden ser entendido como un mecanismo de seguridad en los
+ cuales se puede cambiar el procesamiento de la petición según se requiera
+ -por ejemplo verificar si un usuarios se encuentra autenticado en el sistema-.
+ 
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP corre los filtros en un orden lógico para manipular comprobaciones
+ a nivel de toda la aplicación o bien en particularidades de un controlador.
+\end_layout
+
+\begin_layout Subsection
+Filtros de Controladores.
+\end_layout
+
+\begin_layout Standard
+Los filtros de controladores se ejecutan antes y después de un controlador
+ son útiles para comprobaciones a nivel de aplicación, como por ejemplo
+ verificar el módulo que se esta intentando acceder, sessiones de usuarios,
+ etc.
+ Igualmente se puede usar para proteger nuestro controlador de información
+ inadecuada.
+\end_layout
+
+\begin_layout Standard
+Los filtros son métodos los cuales sobreescribimos (característica POO)
+ para darle el comportamiento deseado.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+initialize()
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP llama al método 
+\emph on
+initialize()
+\emph default
+ antes de ejecutar el controlador y se encuentra definido para ser usado
+ en la clase 
+\emph on
+ApplicationController 
+\emph default
+(ver sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Clase-ApplicationController"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+finalize()
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP llama al método 
+\emph on
+finalize()
+\emph default
+ después de ejecutar el controlador y se encuentra definido para ser usado
+ en la clase 
+\emph on
+ApplicationController 
+\emph default
+(ver sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Clase-ApplicationController"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Filtros de Acciones.
+\end_layout
+
+\begin_layout Standard
+Los filtros de acciones se ejecutan antes y después de una acción son útiles
+ para comprobaciones a nivel de controller, como por ejemplo verificar que
+ una petición es asíncrona, cambiar tipos de respuesta, etc.
+ Igualmente se puede usar para proteger nuestra acción de información inadecuada
+ que sea enviada a ellos.
+\end_layout
+
+\begin_layout Subsubsection
+before_filter()
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP llama al método 
+\emph on
+before_filter()
+\emph default
+ antes de ejecutar la acción del controlador y es útil para verificar si
+ una petición es asíncrona entre otros.
+\end_layout
+
+\begin_layout Subsubsection
+after_filter()
+\end_layout
+
+\begin_layout Standard
+KumbiaPHP llama al método 
+\emph on
+after_filter()
+\emph default
+ después de ejecutar la acción del controlador y es útil para cambiar valores
+ de sessión entre otros.
+\end_layout
+
+\end_body
+\end_document
