@@ -1,4 +1,4 @@
-#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -112,7 +112,7 @@ Manual de KumbiaPHP Framework Versión 1.0 Spirit
 \end_layout
 
 \begin_layout Author
-por Deivinson Tejeda Borrador
+por KumbiaPHP Team Borrador
 \end_layout
 
 \begin_layout Standard
@@ -3481,6 +3481,16 @@ after_filter()
 \emph default
  después de ejecutar la acción del controlador y es útil para cambiar valores
  de sessión entre otros.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "la-vista.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
