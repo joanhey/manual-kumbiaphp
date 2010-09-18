@@ -1,0 +1,119 @@
+#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+% DO NOT ALTER THIS PREAMBLE!!!
+%
+%This preamble is designed to ensure that the document prints
+% out as advertised. If you mess with this preamble,
+% parts of the document may not print out as expected.  If you
+% have problems LaTeXing this file, please contact 
+% the documentation team
+% email: lyx-docs@lists.lyx.org
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+ % set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+
+ % link all cross references and URLs in pdf output
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered,
+  bookmarksopen, bookmarksopenlevel=2,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={KumbiaPHP Team}, pdftex,
+  pdftitle={Manual de KumbiaPHP Framework},pdfsubject={Manual de KumbiaPHP Framework Versión 1.0 Spirit},
+  pdfkeywords={LyX, Documentación, KumbiaPHP, MVC, PHP, Framework}]{hyperref}
+ 
+\else % if dvi or ps is produced
+
+ % link all cross references and URLs in dvi output
+ \usepackage[ps2pdf]{hyperref}
+
+\fi % end if pdflatex is used
+
+% redefine the \LyX macro for PDF bookmarks
+\def\LyX{\texorpdfstring{%
+  L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+  {LyX }}
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\usepackage{listings}
+\lstset{ frame=shadowbox,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+\end_preamble
+\use_default_options false
+\language spanish
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family sfdefault
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 0
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language french
+\papercolumns 1
+\papersides 2
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Poblando Formularios
+\end_layout
+
+\begin_layout Standard
+dfsd
+\end_layout
+
+\end_body
+\end_document
