@@ -112,7 +112,78 @@ La Vista
 \end_layout
 
 \begin_layout Standard
-dfsd
+Kumbia posee un sistema de presentación basado en Vistas (Views) que viene
+ siendo el tercer componente del sistema MVC como se vió en la sección
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Modelo,-Vista,-Controlador"
+
+\end_inset
+
+, en este sentido las vistas constituyen plantillas de código reutilizable
+ que sirven para mostrar los datos al usuario.
+\end_layout
+
+\begin_layout Standard
+Es buena práctica de desarrollo que las vistas contengan una cantidad mínima
+ de código en PHP para que sea suficientemente entendible para un diseñador
+ Web y además, para dejar a las vistas solo las tareas de visualizar los
+ resultados generados por los controladores y presentar las capturas de
+ datos para usuarios.
+ 
+\end_layout
+
+\begin_layout Standard
+En la versión 1.0 se incorporan dos (02) nuevos directorios en el directorio
+ de vistas de nuestra aplicación los cuales son: 
+\end_layout
+
+\begin_layout Enumerate
+views/templates/ 
+\end_layout
+
+\begin_layout Enumerate
+views/partials/ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Estructura-de-Vistas"
+
+\end_inset
+
+Estructura de Vistas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/estructura-vistas.png
+	scale 50
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

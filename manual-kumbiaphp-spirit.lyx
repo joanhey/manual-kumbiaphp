@@ -515,6 +515,13 @@ Seguridad.
 
 \begin_layout Subsection
 Modelo, Vista, Controlador (MVC).
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Modelo,-Vista,-Controlador"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
