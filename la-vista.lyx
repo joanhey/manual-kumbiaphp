@@ -120,8 +120,17 @@ reference "sub:Modelo,-Vista,-Controlador"
 
 \end_inset
 
-, en este sentido las vistas constituyen plantillas de código reutilizable
- que sirven para mostrar los datos al usuario.
+, en este sentido las vistas son plantillas de código reutilizable que sirven
+ para mostrar los datos al usuario y se encuentran ubicadas en el directorio
+ 
+\begin_inset Quotes fld
+\end_inset
+
+app/views
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -130,24 +139,56 @@ Es buena práctica de desarrollo que las vistas contengan una cantidad mínima
  Web y además, para dejar a las vistas solo las tareas de visualizar los
  resultados generados por los controladores y presentar las capturas de
  datos para usuarios.
- 
 \end_layout
 
 \begin_layout Standard
-En la versión 1.0 se incorporan dos (02) nuevos directorios en el directorio
- de vistas de nuestra aplicación los cuales son: 
+El manejador de vistas implementa el patrón de diseño de 
+\emph on
+vista en dos pasos
+\emph default
+, el cual consiste en dividir el proceso de mostrar una vista en dos partes:
+ la primera parte es utilizar una vista o 
+\begin_inset Quotes fld
+\end_inset
+
+view
+\begin_inset Quotes frd
+\end_inset
+
+ asociada a una acción del controlador para convertir los datos que vienen
+ del modelo en lógica de presentación sin especificar ningún formato específico
+ y la segunda es establecer el formato de presentación a través de una plantilla
+ o 
+\begin_inset Quotes fld
+\end_inset
+
+template
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Enumerate
-views/templates/ 
-\end_layout
+\begin_layout Standard
+Asimismo tanto las vistas como las plantillas pueden utilizar vistas parciales
+ o simplemente 
+\begin_inset Quotes fld
+\end_inset
 
-\begin_layout Enumerate
-views/partials/ 
+partials
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Estas vistas parciales son fragmentos de vistas que son compartidas por
+ distintas vistas, de manera que constituyen lógica de presentación reutilizable
+ en la aplicación.
+ Ejemplos: menus, cabeceras, pies, entre otros.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -156,13 +197,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Estructura-de-Vistas"
-
-\end_inset
-
-Estructura de Vistas
+Descripción de Vistas
 \end_layout
 
 \end_inset
@@ -172,9 +207,8 @@ Estructura de Vistas
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/estructura-vistas.png
-	scale 50
-	rotateOrigin center
+	filename img/vista.png
+	scale 60
 
 \end_inset
 
@@ -184,6 +218,104 @@ Estructura de Vistas
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Kumbia favoreciendo siempre los convenios asume los siguientes respecto
+ a las vistas:
+\end_layout
+
+\begin_layout Itemize
+Todos los archivos de vistas deben tener la extensión 
+\begin_inset Quotes fld
+\end_inset
+
+.phtml
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cada controlador tiene un directorio de vistas asociado cuyo nombre coincide
+ con el nombre del controlador en notación 
+\emph on
+smallcase
+\emph default
+.
+ Por ejemplo: si posees un controlador cuya clase se denomina 
+\begin_inset Quotes fld
+\end_inset
+
+PersonalTecnicoController
+\begin_inset Quotes frd
+\end_inset
+
+ esta por convenio tiene un directorio de vistas 
+\begin_inset Quotes fld
+\end_inset
+
+personal_tecnico
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Cada vez que se ejecuta una acción se intenta cargar una vista cuyo nombre
+ es el mismo que el de la acción ejecutada.
+\end_layout
+
+\begin_layout Itemize
+Los templates deben ubicarse en el directorio 
+\begin_inset Quotes fld
+\end_inset
+
+views/_shared/templates
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Los partials deben ubicarse en el directorio 
+\begin_inset Quotes fld
+\end_inset
+
+views/_shared/partials
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Por defecto se utiliza el template 
+\begin_inset Quotes fld
+\end_inset
+
+default
+\begin_inset Quotes frd
+\end_inset
+
+ para mostrar las vistas.
+\end_layout
+
+\begin_layout Section
+Template
+\end_layout
+
+\begin_layout Standard
+Los templates constituyen la capa mas externa de la vista que se mostrará
+ luego de ejecutar una acción del controlador, de manera que permite establecer
+ el formato de presentación apropiado para la vista.
+\end_layout
+
+\begin_layout Section
+Partial
 \end_layout
 
 \end_body
