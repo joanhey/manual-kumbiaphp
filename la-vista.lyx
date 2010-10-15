@@ -109,6 +109,13 @@
 
 \begin_layout Chapter
 La Vista
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:La-Vista"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -170,8 +177,8 @@ template
 \end_layout
 
 \begin_layout Standard
-Asimismo tanto las vistas como las plantillas pueden utilizar vistas parciales
- o simplemente 
+Asimismo tanto las vistas de acción como las plantillas pueden utilizar
+ vistas parciales o 
 \begin_inset Quotes fld
 \end_inset
 
@@ -183,7 +190,7 @@ partials
  Estas vistas parciales son fragmentos de vistas que son compartidas por
  distintas vistas, de manera que constituyen lógica de presentación reutilizable
  en la aplicación.
- Ejemplos: menus, cabeceras, pies, entre otros.
+ Ejemplos: menús, cabeceras, piés de página, entre otros.
 \end_layout
 
 \begin_layout Standard
@@ -301,7 +308,488 @@ default
 \begin_inset Quotes frd
 \end_inset
 
- para mostrar las vistas.
+ para mostrar las vistas de acción.
+\end_layout
+
+\begin_layout Standard
+Para indicar una vista diferente a la asumida por convención se debe utilizar
+ el método 
+\begin_inset Quotes fld
+\end_inset
+
+View::select
+\begin_inset Quotes frd
+\end_inset
+
+ en el controlador.
+ Por ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function saludo()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::select('hola');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+De esta manera luego de que se ejecute la acción 
+\begin_inset Quotes fld
+\end_inset
+
+saludo
+\begin_inset Quotes frd
+\end_inset
+
+ se mostrará la vista 
+\begin_inset Quotes fld
+\end_inset
+
+saludo/hola.phtml
+\begin_inset Quotes frd
+\end_inset
+
+ utilizando el template 
+\begin_inset Quotes fld
+\end_inset
+
+default
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En caso de que no desee mostrar una vista, solamente debe pasar 
+\begin_inset Quotes fld
+\end_inset
+
+NULL
+\begin_inset Quotes frd
+\end_inset
+
+ como argumento de 
+\begin_inset Quotes fld
+\end_inset
+
+View::select
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function index()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::select(NULL);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para finalizar este apartado cabe destacar que tanto las vistas de acción,
+ los templates y los partials son vistas, pero por comodidad se suele referir
+ a la vista de acción sencillamente bajo el nombre de 
+\begin_inset Quotes fld
+\end_inset
+
+vista
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Pasando datos a la vista
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Pasando-datos-a"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para pasar datos a la vista estos deben cargarse como atributos públicos
+ del controlador y luego de que se ejecute la acción el manejador de vistas
+ cargará los atributos públicos del controlador como variables de ámbito
+ local en la vista.
+ Ejemplo:
+\end_layout
+
+\begin_layout Standard
+El controlador: 
+\emph on
+controllers/saludo_controller.php
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function hola()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		$this->usuario = 'Mundo';
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La vista: 
+\emph on
+views/saludo/hola.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Hola <?php echo $usuario ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Pasando datos a la vista
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/la-vista-1.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Buffer de salida
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Buffer-de-salida"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para mostrar el contenido del buffer de salida se hace uso del método 
+\begin_inset Quotes fld
+\end_inset
+
+View::content
+\begin_inset Quotes frd
+\end_inset
+
+, donde el contenido del buffer de salida lo constituye principalmente los
+ 
+\emph on
+echo
+\emph default
+ o 
+\emph on
+print
+\emph default
+ que efectué el usuario y asimismo los mensajes 
+\emph on
+Flash
+\emph default
+.
+ Al invocar 
+\emph on
+View::content 
+\emph default
+se muestra el contenido del buffer de salida en el lugar donde fue invocado.
+\end_layout
+
+\begin_layout Standard
+El controlador: 
+\emph on
+saludo_controller.php
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function hola()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		Flash::valid('Hola Mundo');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La vista: 
+\emph on
+hola.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Saludo realizado:
+\end_layout
+
+\begin_layout Plain Layout
+
+<?php View::content() ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Buffer de salida
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/la-vista-2.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -314,8 +802,1318 @@ Los templates constituyen la capa mas externa de la vista que se mostrará
  el formato de presentación apropiado para la vista.
 \end_layout
 
+\begin_layout Standard
+Cuando se habla de formato no se refiere únicamente al tipo de documento,
+ si no también a elementos como cabeceras y menues.
+ Por ende el template esta compuesto por aquellos elementos que en conjunto
+ son utilizados para la presentación de diversas vistas, dando de esta manera
+ un formato de presentación reutilizable.
+\end_layout
+
+\begin_layout Subsection
+¿Como crear un Template?
+\end_layout
+
+\begin_layout Standard
+Para construir un nuevo template se debe crear un archivo con extensión
+ 
+\emph on
+.phtml 
+\emph default
+en el directorio 
+\emph on
+views/_shared/templates
+\emph default
+ el cual debe corresponder con el nombre del template.
+\end_layout
+
+\begin_layout Standard
+Como se explicó anteriormente al inicio del capítulo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:La-Vista"
+
+\end_inset
+
+, el manejador de vistas utiliza el patrón de diseño de 
+\begin_inset Quotes fld
+\end_inset
+
+vista en dos pasos
+\begin_inset Quotes frd
+\end_inset
+
+.
+ En el primer paso, se procesa la vista de acción, luego la vista de acción
+ procesada se almacena en el buffer de salida y en el segundo paso se procesa
+ el template.
+ 
+\end_layout
+
+\begin_layout Standard
+En consecuencia, como la vista de acción procesada se acumula en el buffer
+ de salida es necesario invocar el método 
+\emph on
+View::content
+\emph default
+ en el lugar donde se desea mostrar la vista, tal como se indicó en la sección
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Buffer-de-salida"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+views/_shared/templates/ejemplo.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtm
+l1/DTD/xhtml1-strict.dtd"> 
+\end_layout
+
+\begin_layout Plain Layout
+
+<html xmlns="http://www.w3.org/1999/xhtml">  
+\end_layout
+
+\begin_layout Plain Layout
+
+<head>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<title>Template de Ejemplo</title>
+\end_layout
+
+\begin_layout Plain Layout
+
+</head>
+\end_layout
+
+\begin_layout Plain Layout
+
+<body>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<h1>Template de Ejemplo</h1>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	<?php View::content() ?>
+\end_layout
+
+\begin_layout Plain Layout
+
+</body>
+\end_layout
+
+\begin_layout Plain Layout
+
+</html>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+¿Como utilizar un template?
+\end_layout
+
+\begin_layout Standard
+Para seleccionar el template a utilizar se debe invocar el método 
+\begin_inset Quotes fld
+\end_inset
+
+View::template
+\begin_inset Quotes frd
+\end_inset
+
+ pasando como argumento el template a utilizar.
+ Ejemplo:
+\end_layout
+
+\begin_layout Standard
+En el controlador:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function hola()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Selecciona el template 'mi_template.phtml'
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::template('mi_template');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Asimismo es posible indicar al manejador de vistas que no utilice ningún
+ template y por lo tanto muestre solamente la vista, para esto se debe pasar
+ 
+\emph on
+NULL
+\emph default
+ como argumento a 
+\emph on
+View::template
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function hola()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// No utilizar template
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::template(NULL);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pasando datos al template
+\end_layout
+
+\begin_layout Standard
+Como se vió en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Pasando-datos-a"
+
+\end_inset
+
+, los atributos públicos del controlador se cargan como variables de ámbito
+ local en la vista, como mostrar el template constituye el segundo paso
+ para mostrar la vista completa, los atributos públicos del controlador
+ estarán de igual manera cargados como variables de ámbito local en el template.
+ Ejemplo:
+\end_layout
+
+\begin_layout Standard
+En el controlador 
+\emph on
+saludo_controller.php
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class SaludoController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function hola()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		Flash::valid('Hola Mundo');
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Pasando el titulo para la página
+\end_layout
+
+\begin_layout Plain Layout
+
+		$this->titulo = 'Saludando al Mundo';
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* No se utilizará vista, por lo tanto la 
+\end_layout
+
+\begin_layout Plain Layout
+
+			salida será del buffer y template */
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::select(NULL, 'saludo');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el template 
+\emph on
+saludo.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtm
+l1/DTD/xhtml1-strict.dtd"> 
+\end_layout
+
+\begin_layout Plain Layout
+
+<html xmlns="http://www.w3.org/1999/xhtml">  
+\end_layout
+
+\begin_layout Plain Layout
+
+<head>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<title><?php echo $titulo ?></title>
+\end_layout
+
+\begin_layout Plain Layout
+
+</head>
+\end_layout
+
+\begin_layout Plain Layout
+
+<body>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<h1>Template de Saludo</h1>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	<?php View::content() ?>
+\end_layout
+
+\begin_layout Plain Layout
+
+</body>
+\end_layout
+
+\begin_layout Plain Layout
+
+</html>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Partial
+\end_layout
+
+\begin_layout Standard
+Los partials o 
+\begin_inset Quotes fld
+\end_inset
+
+vistas parciales
+\begin_inset Quotes frd
+\end_inset
+
+ son fragmentos de vistas que son compartidas por distintas vistas, de manera
+ que constituyen lógica de presentación reutilizable en la aplicación.
+ Por lo general los partials son elementos como: menús, cabecera, pie de
+ página, formularios, entre otros.
+\end_layout
+
+\begin_layout Subsection
+¿Como crear un partial?
+\end_layout
+
+\begin_layout Standard
+Para construir un nuevo partial se debe crear un archivo con extensión 
+\emph on
+.phtml 
+\emph default
+en el directorio 
+\emph on
+views/_shared/partials
+\emph default
+ el cual debe corresponder con el nombre del partial.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+views/_shared/partials/cabecera.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=HTML,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<h1>Template de Saludo</h1>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+¿Como utilizar un partial?
+\end_layout
+
+\begin_layout Standard
+Para utilizar un partial se debe invocar el metodo 
+\begin_inset Quotes fld
+\end_inset
+
+View::partial
+\begin_inset Quotes frd
+\end_inset
+
+ indicando como argumento el partial deseado y la vista parcial se mostrará
+ en el lugar donde se invocó.
+\end_layout
+
+\begin_layout Standard
+Ejemplo utilizando un partial en un template:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1
+/DTD/xhtml1-strict.dtd"> 
+\end_layout
+
+\begin_layout Plain Layout
+
+<html xmlns="http://www.w3.org/1999/xhtml">  
+\end_layout
+
+\begin_layout Plain Layout
+
+<head>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<title>Ejemplo</title>
+\end_layout
+
+\begin_layout Plain Layout
+
+</head>
+\end_layout
+
+\begin_layout Plain Layout
+
+<body>
+\end_layout
+
+\begin_layout Plain Layout
+
+	<?php View::partial('cabecera') ?>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	<?php View::content() ?>
+\end_layout
+
+\begin_layout Plain Layout
+
+</body>
+\end_layout
+
+\begin_layout Plain Layout
+
+</html>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cabe destacar que los partial se pueden utilizar tanto en vistas de acción,
+ templates e incluso dentro de otros partials.
+\end_layout
+
+\begin_layout Subsection
+Pasando datos a los partials
+\end_layout
+
+\begin_layout Standard
+Para pasar datos a un partial, estos se deben indicar en un array asociativo
+ donde cada clave con su correspondiente valor se cargarán como variables
+ en el ámbito local del partial.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+views/partials/cabecera.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<h1>Título: <?php echo $titulo ?></h1>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+views/ejemplo/index.phtml
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php View::partial('cabecera', FALSE, array('titulo' => 'Ejemplo')) ?>
+\end_layout
+
+\begin_layout Plain Layout
+
+<p>
+\end_layout
+
+\begin_layout Plain Layout
+
+Este es un ejemplo
+\end_layout
+
+\begin_layout Plain Layout
+
+</p>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Pasando datos a los partials
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/la-vista-3.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Agrupando en directorios
+\end_layout
+
+\begin_layout Standard
+En KumbiaPHP tanto las vistas, los partials y los templates pueden agruparse
+ en directorios, utilizando de separador en la ruta el 
+\begin_inset Quotes fld
+\end_inset
+
+/
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Ejemplo de agrupación de vista
+\end_layout
+
+\begin_layout Standard
+La vista 
+\emph on
+views/usuario/clasificado/fomulario.phtml
+\emph default
+, se utiliza
+\emph on
+ 
+\emph default
+de la siguiente manera en el controlador:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class UsuarioController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function nuevo()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Selecciona la vista
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::select('clasificado/formulario');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejemplo de agrupación de partial
+\end_layout
+
+\begin_layout Standard
+El partial 
+\emph on
+views/_shared/partials/usuario/formulario.phtml
+\emph default
+, se utiliza
+\emph on
+ 
+\emph default
+de la siguiente manera ya sea en vista o en template:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<h1>Nuevo Usuario</h1>
+\end_layout
+
+\begin_layout Plain Layout
+
+<?php View::partial('usuario/formulario') ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejemplo de agrupación de template
+\end_layout
+
+\begin_layout Standard
+El template 
+\emph on
+views/_shared/templates/usuario/administrador.phtml
+\emph default
+, se utiliza
+\emph on
+ 
+\emph default
+de la siguiente manera en el controlador:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class AdministradorController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	protected function before_filter()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Selecciona el template
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::template('usuario/administrador');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Tipos de respuestas
+\end_layout
+
+\begin_layout Standard
+Los tipos de respuestas son utilizados para establecer distintos formatos
+ de la vista.
+ Por ejemplo: xml, json y pdf.
+\end_layout
+
+\begin_layout Standard
+Para establecer un tipo de respuesta se debe invocar el método 
+\emph on
+View::response
+\emph default
+ indicando la respuesta deseada, una vez que se indica el tipo de respuesta
+ este es automaticamente colocado como extension del archivo de vista.
+ En consecuencia utilizar los tipos de respuestas en conjunto a los template
+ constituyen una potente herramienta para generación de vistas completas
+ para el usuario.
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class UsuarioController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function index()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Establece el tipo de respuesta
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::response('json');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este ejemplo se mostrará la vista 
+\begin_inset Quotes fld
+\end_inset
+
+index.json.phtml
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Uso de cache
+\end_layout
+
+\begin_layout Standard
+El manejador de vistas proporciona mecanismos através de los cuales las
+ vistas, los partials y los templates se pueden cachear, el usuario indica
+ el tiempo durante el cual estos estarán almacenados en la cache de manera
+ que el manejador de vistas cargará estos elementos sin necesidad de procesarlos
+, aumentando el rendimiento de la aplicación.
+\end_layout
+
+\begin_layout Standard
+En este sentido para indicar el tiempo de cache se sigue el formato de la
+ función 
+\emph on
+strtotime
+\emph default
+ de PHP.
+ Ejemplo: '+1 week';
+\end_layout
+
+\begin_layout Subsection
+Cache de vistas
+\end_layout
+
+\begin_layout Standard
+Para cachear una vista se utiliza el método 
+\emph on
+View::cache
+\emph default
+ en el controlador.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class UsuarioController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function index()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Indica el tiempo de cache de la vista
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::cache('+20 days');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cabe destacar que la acción en el controlador se ejecuta, debido a que los
+ datos pasados a la vista pueden de igual manera ser requeridos en el template.
+\end_layout
+
+\begin_layout Subsubsection
+Grupos de vistas en cache
+\end_layout
+
+\begin_layout Standard
+Las vistas cacheadas se pueden almacenar en grupos, en este caso es necesario
+ indicar en el método 
+\emph on
+View::cache
+\emph default
+ que se cacheará una vista en un grupo específico.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class UsuarioController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function index()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Indica el tiempo de cache de la vista
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::cache('+20 days', 'view', 'miGrupo');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cache de templates
+\end_layout
+
+\begin_layout Standard
+Cachear un template consiste en cachear en conjunto tanto la vista y template
+ para una url específica.
+ Para cachear un template debe invocarse el método 
+\emph on
+View::cache
+\emph default
+ en el controlador indicando el tiempo durante el cual estará cacheado el
+ template.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+class UsuarioController extends ApplicationController
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	public function index()
+\end_layout
+
+\begin_layout Plain Layout
+
+	{
+\end_layout
+
+\begin_layout Plain Layout
+
+		// Indica el tiempo de cache de template
+\end_layout
+
+\begin_layout Plain Layout
+
+		View::cache('+20 days', 'template');
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cabe destacar que para aumentar el rendimiento no se ejecuta la acción en
+ el controlador, debido a que mostrar el template es el último paso que
+ realiza el manejador de vistas para mostrar la vista al usuario y en este
+ paso ya todos los datos enviados a la vista y template han sido utilizados.
+\end_layout
+
+\begin_layout Subsection
+Cache de partials
+\end_layout
+
+\begin_layout Standard
+Para cachear partials se debe indicar como segundo argumento al invocar
+ 
+\emph on
+View::partial
+\emph default
+ el tiempo durante el cual se cacheará.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php View::partial('usuario', '+1 day') ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php View::partial('usuario', '+1 day', array('nombre' => 'pepe')) ?>
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
