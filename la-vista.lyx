@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -177,7 +177,7 @@ template
 \end_layout
 
 \begin_layout Standard
-Asimismo tanto las vistas de acción como las plantillas pueden utilizar
+Asi mismo tanto las vistas de acción como las plantillas pueden utilizar
  vistas parciales o 
 \begin_inset Quotes fld
 \end_inset
@@ -228,7 +228,7 @@ Descripción de Vistas
 \end_layout
 
 \begin_layout Standard
-Kumbia favoreciendo siempre los convenios asume los siguientes respecto
+KumbiaPHP favoreciendo siempre los convenios asume los siguientes respecto
  a las vistas:
 \end_layout
 
@@ -2109,6 +2109,285 @@ status open
 \begin_layout Plain Layout
 
 <?php View::partial('usuario', '+1 day', array('nombre' => 'pepe')) ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Helpers
+\end_layout
+
+\begin_layout Standard
+El objetivo de los helpers es el de encapsular grandes cantidades de código
+ HTML o Javascript minimizándolo en una sola función, esto facilita y agiliza
+ la escritura de código HTML al escribir una vista.
+ A continuación la referencia de estos: 
+\end_layout
+
+\begin_layout Subsection
+Clase Form
+\end_layout
+
+\begin_layout Standard
+Clase con métodos estáticos con la que podemos crear etiquetas HTML optimizadas
+ respetando las convenciones de KumbiaPHP.
+\end_layout
+
+\begin_layout Subsubsection
+Html::img() 
+\end_layout
+
+\begin_layout Standard
+Permite incluir una imagen.
+ El siguiente ejemplo muestra la imagen 
+\emph on
+spin.gif
+\emph default
+ que se encuentra dentro del directorio 
+\emph on
+/public/img/
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php echo Html::img('spin.gif','cargando...') ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Agregando más atributos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php echo Html::img('spin.gif','cargando...','class="load" title="cargando..."')
+ ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Html::link()
+\end_layout
+
+\begin_layout Standard
+Crea un enlace en una aplicación.
+ El siguiente ejemplo muestra un enlace con el texto 
+\emph on
+Configuración
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php echo Html::link('pages/show/kumbia/status','Configuración'); ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Html::linkAction()
+\end_layout
+
+\begin_layout Standard
+Crea un enlace en una aplicación.
+ La diferencia con 
+\emph on
+Html::link()
+\emph default
+ es que en este no es necesario especificar el controlador ya que toma por
+ defecto el controlador donde se encuentre la vista.
+ El siguiente ejemplo muestra un enlace con el texto 
+\emph on
+Configuración
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php echo Html::linkAction('index/','Listar'); ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Html::lists()
+\end_layout
+
+\begin_layout Standard
+Permite crear una lista ordenada o desordenada a partir de un arreglo, por
+ defecto crea listas desordenadas 
+\emph on
+<ul></ul>
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php $arreglo = array('Abdomen','Brazos','Cabeza','Cuello','Piernas','Tórax','O
+tros'); ?>
+\end_layout
+
+\begin_layout Plain Layout
+
+<?php echo Html::lists($arreglo); ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para una lista ordenada:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php $arreglo = array('Abdomen','Brazos','Cabeza','Cuello','Piernas','Tórax','O
+tros'); ?>
+\end_layout
+
+\begin_layout Plain Layout
+
+<?php echo Html::lists($arreglo, 'ol'); ?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Html::meta()
+\end_layout
+
+\begin_layout Standard
+Crea un metatag y lo agrega a una lista estática que sera añadida mas adelante
+ mediante 
+\emph on
+Html::includeMetatags().
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+Html::meta('Kumbiaphp-team',"name = 'Author'");
+\end_layout
+
+\begin_layout Plain Layout
+
+Html::meta('text/html; charset=UTF-8',"http-equiv='Content-type'");
+\end_layout
+
+\begin_layout Plain Layout
+
+?>
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Html::includeMetatags()
+\end_layout
+
+\begin_layout Standard
+Incluye los metatags que se agregaron con 
+\emph on
+Html::meta().
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP,tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+<?php
+\end_layout
+
+\begin_layout Plain Layout
+
+Html::meta('Kumbiaphp-team',"name = 'Author'");
+\end_layout
+
+\begin_layout Plain Layout
+
+Html::meta('text/html; charset=UTF-8',"http-equiv='Content-type'");
+\end_layout
+
+\begin_layout Plain Layout
+
+echo Html::includeMetatags();
+\end_layout
+
+\begin_layout Plain Layout
+
+?>
 \end_layout
 
 \end_inset
