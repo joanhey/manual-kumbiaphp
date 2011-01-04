@@ -207,5 +207,65 @@ driver
  
 \end_layout
 
+\begin_layout Section
+driver($driver=null)
+\end_layout
+
+\begin_layout Standard
+Este metodo permite obtener un manejador de cache específico (APC, file,
+ nixfile, sqlite, memsqlite), si no se indica, se obtiene el manejador de
+ cache por defecto indicado en el config.ini.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=PHP"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// cache por defecto 
+\end_layout
+
+\begin_layout Plain Layout
+
+$data = Cache::driver()->get('data');
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// manejador para memcache 
+\end_layout
+
+\begin_layout Plain Layout
+
+$data_memcache = Cache::driver('memcache')->get('data');
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// manejador para cache con APC 
+\end_layout
+
+\begin_layout Plain Layout
+
+$data_apc = Cache::driver('APC')->get('data');
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document

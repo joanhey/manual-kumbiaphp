@@ -1,4 +1,4 @@
-#LyX 1.6.1 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -1524,7 +1524,7 @@ Pasando datos a los partials
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename img/la-vista-3.png
+	filename img/la-vista-3.jpg
 	scale 70
 
 \end_inset
